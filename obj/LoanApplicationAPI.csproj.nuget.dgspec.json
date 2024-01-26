@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/noahakkad/Projects/LoanApplicationAPI/LoanApplicationAPI.csproj": {}
+    "/Users/noahakkad/Projects/dyn-web-2-inlamning-1-NoahAkkad/LoanApplicationAPI.csproj": {}
   },
   "projects": {
-    "/Users/noahakkad/Projects/LoanApplicationAPI/LoanApplicationAPI.csproj": {
+    "/Users/noahakkad/Projects/dyn-web-2-inlamning-1-NoahAkkad/LoanApplicationAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/noahakkad/Projects/LoanApplicationAPI/LoanApplicationAPI.csproj",
+        "projectUniqueName": "/Users/noahakkad/Projects/dyn-web-2-inlamning-1-NoahAkkad/LoanApplicationAPI.csproj",
         "projectName": "LoanApplicationAPI",
-        "projectPath": "/Users/noahakkad/Projects/LoanApplicationAPI/LoanApplicationAPI.csproj",
+        "projectPath": "/Users/noahakkad/Projects/dyn-web-2-inlamning-1-NoahAkkad/LoanApplicationAPI.csproj",
         "packagesPath": "/Users/noahakkad/.nuget/packages/",
-        "outputPath": "/Users/noahakkad/Projects/LoanApplicationAPI/obj/",
+        "outputPath": "/Users/noahakkad/Projects/dyn-web-2-inlamning-1-NoahAkkad/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/noahakkad/.nuget/NuGet/NuGet.Config"
@@ -40,7 +40,7 @@
           "dependencies": {
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

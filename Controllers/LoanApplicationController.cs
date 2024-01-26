@@ -37,6 +37,7 @@ public class LoanApplicationController : ControllerBase
 
     // GET: api/LoanApplication
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetLoanApplications()
     {
         // Retrieve all loan applications
@@ -45,20 +46,32 @@ public class LoanApplicationController : ControllerBase
 
     // GET: api/LoanApplication/1
     [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult GetLoanApplication(int id)
     {
         // Retrieve a specific loan application by ID
         var loanApp = loanApplications.Find(app => app.Id == id);
+        
         if (loanApp == null)
-            return NotFound("Loan application not found.");
+            return NotFound();
+
+        if (id == 0)
+            return BadRequest();
 
         return Ok(loanApp);
     }
 
     // GET: api/LoanApplication/status/approved
     [HttpGet("status/{status}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult GetLoanApplicationsByStatus(string status)
     {
+        if (string.IsNullOrEmpty(status) || (status != "Submitted" && status != "Approved" && status != "Rejected"))
+            return NotFound();
+
         // Retrieve all loan applications with a specific status
         var filteredApps = loanApplications.FindAll(app => app.Status.Equals(status, StringComparison.OrdinalIgnoreCase));
         return Ok(filteredApps);
@@ -66,17 +79,36 @@ public class LoanApplicationController : ControllerBase
 
     // GET: api/LoanApplication/borrower/1
     [HttpGet("borrower/{borrowerId}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult GetLoanApplicationsByBorrower(int borrowerId)
     {
         // Retrieve all loan applications made by a specific borrower based on borrower ID
         var borrowerApps = loanApplications.FindAll(app => app.Borrower.Id == borrowerId);
+
+        if (borrowerId == 0)
+            return BadRequest();
+
+        if (borrowerApps == null)
+            return NotFound();
+
         return Ok(borrowerApps);
     }
 
     // POST: api/LoanApplication
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public IActionResult CreateLoanApplication([FromBody] LoanApplication loanApp)
     {
+        if (loanApp == null)
+            return BadRequest(loanApp);
+
+        if (loanApp.Id > 0)
+            return StatusCode(StatusCodes.Status500InternalServerError);
+
         // Create a new loan application
         loanApp.Id = loanApplications.Count + 1;
         loanApp.Date = DateTime.Now;
@@ -87,12 +119,16 @@ public class LoanApplicationController : ControllerBase
 
     // PUT: api/LoanApplication/1
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
     public IActionResult UpdateLoanApplication(int id, [FromBody] LoanApplication updatedLoanApp)
     {
         // Update an existing loan application by providing its ID and the updated information
         var existingLoanApp = loanApplications.Find(app => app.Id == id);
+
         if (existingLoanApp == null)
-            return NotFound("Loan application not found.");
+            return BadRequest("Loan application not found.");
 
         existingLoanApp.Amount = updatedLoanApp.Amount;
         existingLoanApp.Status = updatedLoanApp.Status;
@@ -102,14 +138,25 @@ public class LoanApplicationController : ControllerBase
 
     // DELETE: api/LoanApplication/1
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult DeleteLoanApplication(int id)
     {
         // Delete an existing loan application by providing its ID
         var loanApp = loanApplications.Find(app => app.Id == id);
+
         if (loanApp == null)
             return NotFound("Loan application not found.");
 
+        if (id == 0)
+            return BadRequest();
+
         loanApplications.Remove(loanApp);
-        return NoContent();
+        // Add a message indicating that the borrower has been deleted
+        string message = $"Borrower {loanApp.Borrower.FirstName} {loanApp.Borrower.Surname} has been deleted.";
+
+        // Return a response with the message
+        return Ok(new { Message = message });
     }
 }

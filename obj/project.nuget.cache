@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "EHlO5wMUkaht6i05UK/zPhRQrm7VkyaEDicRgeHmrwWa5NsAIWyMgGUOFEqRMJ444uWqbDiUbIGVqILIgUdQzA==",
+  "dgSpecHash": "oT8+dZ3V+fRCw3EVk+Fnk1u33Qd3XRFbY8yLnXHF1rE8qBQyII2IBLKLwGp3A5RYWHv2laMj5e4LW1d9eBlj0w==",
   "success": true,
-  "projectFilePath": "/Users/noahakkad/Projects/LoanApplicationAPI/LoanApplicationAPI.csproj",
+  "projectFilePath": "/Users/noahakkad/Projects/dyn-web-2-inlamning-1-NoahAkkad/LoanApplicationAPI.csproj",
   "expectedPackageFiles": [
     "/Users/noahakkad/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/noahakkad/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
-    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
-    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
-    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
-    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/Users/noahakkad/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
   ],
   "logs": []
 }
