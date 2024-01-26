@@ -1,6 +1,6 @@
-﻿# Loan Application API Documentation
+# Loan Application API Documentation
 
-Welcome to the Loan Application API documentation.
+Welcome to the Loan Application API documentation. 
 This API is designed to manage loan applications for a bank, allowing you to perform CRUD operations on loan applications, retrieve applications based on various criteria, and simulate data using hardcoded objects.
 
 ## Endpoints
@@ -51,15 +51,16 @@ This API is designed to manage loan applications for a bank, allowing you to per
     "date": "2024-01-24T12:00:00"
   }
 ]
-
+```
 
 ### 2. Get a specific loan application by ID
-Endpoint: GET /api/LoanApplication/{id}
 
-Description: Retrieve a specific loan application by providing its ID.
+**Endpoint:** `GET /api/LoanApplication/{id}`
 
-Example Response:
+**Description:** Retrieve a specific loan application by providing its ID.
 
+**Example Response:**
+```json
 {
   "id": 2,
   "borrower": {
@@ -72,14 +73,16 @@ Example Response:
   "status": "Approved",
   "date": "2024-01-22T12:00:00"
 }
+```
 
 ### 3. Get all loan applications with a certain status
-Endpoint: GET /api/LoanApplication/status/{status}
 
-Description: Retrieve all loan applications with a specific status.
+**Endpoint:** `GET /api/LoanApplication/status/{status}`
 
-Example Response:
+**Description:** Retrieve all loan applications with a specific status.
 
+**Example Response:**
+```json
 [
   {
     "id": 1,
@@ -94,14 +97,16 @@ Example Response:
     "date": "2024-01-20T12:00:00"
   }
 ]
+```
 
 ### 4. Get all loan applications made by a specific borrower
-Endpoint: GET /api/LoanApplication/borrower/{borrowerId}
 
-Description: Retrieve all loan applications made by a specific borrower, identified by their ID.
+**Endpoint:** `GET /api/LoanApplication/borrower/{borrowerId}`
 
-Example Response:
+**Description:** Retrieve all loan applications made by a specific borrower, identified by their ID.
 
+**Example Response:**
+```json
 [
   {
     "id": 1,
@@ -116,14 +121,16 @@ Example Response:
     "date": "2024-01-20T12:00:00"
   }
 ]
+```
 
 ### 5. Create a new loan application
-Endpoint: POST /api/LoanApplication
 
-Description: Create a new loan application by providing the necessary details in the request body.
+**Endpoint:** `POST /api/LoanApplication`
 
-Example Request Body:
+**Description:** Create a new loan application by providing the necessary details in the request body.
 
+**Example Request Body:**
+```json
 {
   "borrower": {
     "id": 104,
@@ -134,9 +141,10 @@ Example Request Body:
   "amount": 20000,
   "status": "Submitted"
 }
+```
 
-Example Response:
-
+**Example Response:**
+```json
 {
   "id": 4,
   "borrower": {
@@ -149,21 +157,24 @@ Example Response:
   "status": "Submitted",
   "date": "2024-01-25T12:00:00"
 }
+```
 
 ### 6. Update an existing loan application
-Endpoint: PUT /api/LoanApplication/{id}
 
-Description: Update an existing loan application by providing its ID and the updated information in the request body.
+**Endpoint:** `PUT /api/LoanApplication/{id}`
 
-Example Request Body:
+**Description:** Update an existing loan application by providing its ID and the updated information in the request body.
 
+**Example Request Body:**
+```json
 {
   "amount": 18000,
   "status": "Approved"
 }
+```
 
-Example Response:
-
+**Example Response:**
+```json
 {
   "id": 4,
   "borrower": {
@@ -176,19 +187,29 @@ Example Response:
   "status": "Approved",
   "date": "2024-01-25T12:00:00"
 }
+```
 
 ### 7. Delete an existing loan application
-Endpoint: DELETE /api/LoanApplication/{id}
 
-Description: Delete an existing loan application by providing its ID.
+**Endpoint:** `DELETE /api/LoanApplication/{id}`
 
-Example Response:
+**Description:** Delete an existing loan application by providing its ID.
 
-{} // Empty response on successful deletion
+**Example Response:**
+```json
+{
+  "Message": "Borrower John Doe has been deleted."
+}
+```
 
-Request and Response Format
-Request Format
-For POST and PUT requests, the request body should be in JSON format, following the structure of the loan application.
-Response Format
-Successful responses will have an HTTP status code of 200 OK or 201 Created along with the requested or created data.
-Error responses will include an appropriate HTTP status code along with an error message.
+## Request and Response Format
+
+### Request Format
+
+- For `POST` and `PUT` requests, the request body should be in JSON format, following the structure of the loan application.
+
+### Response Format
+
+- Successful responses will have an HTTP status code of `200 OK` or `201 Created` along with the requested or created data.
+- Error responses will include an appropriate HTTP status code along with an error message.
+
